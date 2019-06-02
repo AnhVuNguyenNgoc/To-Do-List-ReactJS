@@ -2,8 +2,14 @@ import React from 'react';
 import ItemTask from './ItemTask';
 
 class ListTask extends React.Component {
-
+    
     render() {
+        const { tasks } = this.props;
+        
+        const  taskItem  = tasks.map((task, index) => {
+            return <ItemTask key={task.id} index = {index} task={task}/>
+        });
+
         return (
             <div className="row mt-15">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -31,9 +37,8 @@ class ListTask extends React.Component {
                                 </td>
                                 <td></td>
                             </tr>
-                         <ItemTask/>
-                         <ItemTask/>
-                         <ItemTask/>
+                            {taskItem}
+
                         </tbody>
                     </table>
                 </div>
